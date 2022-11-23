@@ -75,7 +75,6 @@ function agregarPokemon() {
 console.log('------------------');
 // console.log(agregarPokemon());
 
-// Math.random() * (max - min) + min;
 
 //6. Crear una funcion que agregue de manera aleatoria los atributos min_damage y max_damage a nuestro arreglo de pokemons teniendo en cuenta lo siguiente:
 // min_damage debe ser un numero entero aleatorio entre 1 y 2 y max_damage debe ser un numero entero aleatorio entre 3 y 5
@@ -86,12 +85,9 @@ function addAtributos() {
         obj.max_damage = Math.floor(Math.random() * ( 6 - 3 ) + 3 );
     });
     return pokemons
-    // console.log(pokemons);
 }
 
 console.log(addAtributos());
-console.log('Lista de pokemons');
-console.log(pokemons);
 
 //7. Crear una funcion que determine el daño que hara un pokemon elegido de la lista ante una posible pelea, para ello considerar que el daño que hara el pokemon es:
 // daño = base_damage + un valor aleatorio entre el min_damage y el max_damage
@@ -123,10 +119,6 @@ function getDamage( pok ) {
 function ordenarMaestro() {
     agregarPokemon();
     agregarPokemon();
-
-
-    console.log(MaestroPokemon)
-    console.log('-------')
     console.log(MaestroPokemon.pokemon.sort( (a, b) => (b.base_damage + b.max_damage) - (a.base_damage + a.max_damage) ))
 }
 

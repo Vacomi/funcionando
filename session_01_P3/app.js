@@ -22,7 +22,7 @@ console.log('EJERCICIOS');
 //2. Crear una funcion para ordernar los pokemons dependiendo de el argumento que se ingrese en la funcion. Pueden ingresar: type, base_damage, base_hp o speed.
 
 function ordenarPokemon (parametro) {
-    let requeridos = ['type', 'base_damage', 'base_hp', 'speed'];
+    let requeridos = ['type', 'base_damage', 'base_hp', 'speed', 'name', 'id'];
 
     if( requeridos.includes(parametro)) {
         let respuesta = pokemons.sort( (a, b) => {
@@ -87,7 +87,7 @@ function addAtributos() {
     return pokemons
 }
 
-console.log(addAtributos());
+// console.log(addAtributos());
 
 //7. Crear una funcion que determine el daño que hara un pokemon elegido de la lista ante una posible pelea, para ello considerar que el daño que hara el pokemon es:
 // daño = base_damage + un valor aleatorio entre el min_damage y el max_damage
@@ -123,3 +123,77 @@ function ordenarMaestro() {
 }
 
 // ordenarMaestro();
+
+
+
+
+
+//9. Crear una lista desordenada de Pokemons en nuestro documento HTML
+const $root = document.getElementById('root');
+const ul = document.createElement('ul');
+$root.appendChild(ul);
+
+pokemons.forEach (pokemon => {
+    const li = document.createElement('li')
+    li.textContent = pokemon.name
+    li.addEventListener("click", () => setDamage(1))
+    ul.append(li)
+})
+ 
+//10. Utilizando javascript crear una tabla de pokemons con las siguientes columnas: id, name, type, base_damage, base_hp, speed
+
+const $table = document.createElement('table');
+$table.setAttribute('border', 'collapse')
+$root.append($table);
+
+const $thead = document.createElement('thead');
+const $tbody = document.createElement('tbody');
+const $tr    = document.createElement('tr');
+// cabeceras
+for (const key in pokemons[0]  ) {
+    const $th = document.createElement('th');
+    $th.textContent = key;
+    $th.addEventListener('click', (e) => {
+        $tbody.innerHTML = ''
+        console.log(ordenarPokemon(e.target.textContent));
+        pintarCuerpo();
+    } )
+    $tr.append($th)
+    // console.log();
+}
+$thead.append($tr)
+$table.append($thead)
+
+
+
+
+pintarCuerpo();
+// Cuerpo
+function pintarCuerpo() {
+
+    for (const indice in pokemons) {
+        const $trb = document.createElement('tr')
+        
+        for ( let i = 0; i < Object.keys(pokemons[indice]).length; i++ ) {
+    
+            let prop = Object.keys(pokemons[indice])[i];
+            const $td = document.createElement('td');
+            $td.textContent = pokemons[indice][prop];
+        
+            $trb.append($td)
+        }
+        $tbody.append($trb)
+    }
+    
+    $table.append($tbody)
+    
+}
+
+
+// console.log(pokemons);
+
+ 
+//11. Utilizando javascript modifica el codigo creado en el ejecicio anterior y agrega un evento que permita ordenar los pokemons haciendo click en sus encabezados.
+ 
+//12. Corrige la function sortPokemons para que acepte ordenarlos segun id y name.
+ 

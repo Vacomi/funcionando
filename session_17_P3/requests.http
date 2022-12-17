@@ -1,0 +1,28 @@
+###
+POST http://localhost:3000/api/users HTTP/1.1
+Content-Type: application/json
+
+{
+    "name" : "Nimahi Lopez",
+    "edad" : "24",
+    "email": "Alvaro_mz@gmail.com"
+}
+
+###
+GET http://localhost:3000/api/users HTTP/1.1
+
+###
+GET http://localhost:3000/api/users/639ce150a42bcf29fb1acd95 HTTP/1.1
+
+###
+PUT http://localhost:3000/api/users/639ce150a42bcf29fb1acd95 HTTP/1.1
+Content-Type: application/json
+
+{
+    "name" : "Nimahi Soraya",
+    "edad" : "24",
+    "email": "sorayinna@gmail.com"
+}
+
+###
+DELETE http://localhost:3000/api/users/639cd9f5faab81c61d2f0f8b HTTP/1.1
